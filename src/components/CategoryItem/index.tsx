@@ -1,7 +1,11 @@
 import React from "react";
 import { TouchableOpacity, Text, Image, Dimensions } from "react-native";
+import { Category } from "../../models";
 const { width, height } = Dimensions.get("window");
-export default function index() {
+type categoryItemProps = {
+  item: Category;
+};
+function index({ item }: categoryItemProps) {
   return (
     <TouchableOpacity
       style={{
@@ -16,12 +20,13 @@ export default function index() {
       <Image
         style={{ width: width * 0.18, height: width * 0.18, borderRadius: 8 }}
         source={{
-          uri: "https://cdn.getir.com/cat/5fd8c58f3bdc2389a56e0fb0_2b1a70ca-4a4a-4477-adf1-7414a476aff8.jpeg",
+          uri: item.src,
         }}
       />
       <Text style={{ fontSize: 12, color: "#616161", fontWeight: "500" }}>
-        İndirimler
+        {item.name}
       </Text>
     </TouchableOpacity>
   );
 }
+export default index;
